@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model #This is best way
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
-        Model = get_user_model()
+        model = get_user_model()
         fields = ["id", 'email', 'username', 'first_name', 'last_name', 'password']
         extra_kwargs = {
             'password' : {'write_only': True} #Is can't be seen
@@ -20,4 +20,4 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
                                        first_name=first_name, last_name=last_name)
         new_user.set_password(password)
         new_user.save()
-        return new_user()
+        return new_user
